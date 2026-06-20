@@ -1,18 +1,8 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Contact from './pages/Contact'
-import About from './pages/About'
-import Login from './pages/Login'
-import PlaceOrder from './pages/PlaceOrder'
-import Orders from './pages/Orders'
-import Product from './pages/Product'
-import Collection from './pages/Collection'
-import Cart from './pages/Cart'
-import Navbar from './components/Navbar'
 
 const App = () => {
   return (
+<<<<<<< HEAD
 <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
   <Navbar />
 <Routes>
@@ -28,6 +18,9 @@ const App = () => {
 </Routes>
 
 </div>
+=======
+    <div>App</div>
+>>>>>>> edf4e10d045f8d0af0dba504cb391bf1a4f87da7
   )
 }
 

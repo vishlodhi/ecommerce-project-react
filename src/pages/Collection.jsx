@@ -8,10 +8,48 @@ const Collection = () => {
   const { products } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
+
+  const toggleCategory = (e) => {
+    if (category.includes(e.target.value)) {
+      setCategory(prev => prev.filter(item => item !== e.target.value))
+    }
+    else {
+      setCategory(prev => [...prev, e.target.value])
+    }
+  }
+
+  const toggleSubCategory = (e) => {
+
+    if (subCategory.includes(e.target.value)) {
+      setSubCategory(prev => prev.filter(item => item !== e.target.value))
+    }
+    else {
+      setSubCategory(prev => [...prev, e.target.value])
+    }
+  }
+  
+
+ const applyFilter =()=>{
+  
+  let productsCopy = products.slice();
+
+  if (category.length > 0){
+    productsCopy = productsCopy.filter(item=>category.includes(item.category));
+  }
+   setFilterProducts(productsCopy);
+ }
+
+ useEffect(()=>{
+  setFilterProducts(products);
+ },[products])
 
   useEffect(()=>{
-    setFilterProducts(products);
-  },[])
+    applyFilter();
+  },[category])
+
+
 
   return (
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
@@ -24,13 +62,13 @@ const Collection = () => {
           <p className='text-sm mb-5 font-medium' >CATEGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'Men'} id="" className='w-3' />Men
+              <input type="checkbox" value={'Men'} id="" className='w-3' onChange={toggleCategory} />Men
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'Women'} id="" className='w-3' />Wpmen
+              <input type="checkbox" value={'Women'} id="" className='w-3' onChange={toggleCategory} />Women
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'Children'} id="" className='w-3' />Children
+              <input type="checkbox" value={'Kids'} id="" className='w-3' onChange={toggleCategory} />kids
             </p>
           </div>
         </div>
@@ -39,43 +77,42 @@ const Collection = () => {
           <p className='text-sm mb-5 font-medium' >SUB-CATEGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'Summerwear'} id="" className='w-3' />Summerwear
+              <input type="checkbox" value={'Summerwear'} id="" className='w-3' onChange={toggleSubCategory} />Summerwear
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'WinterWear'} id="" className='w-3' />WinterWear
+              <input type="checkbox" value={'WinterWear'} id="" className='w-3' onChange={toggleSubCategory} />WinterWear
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'BottomWear'} id="" className='w-3' />BottomWear
+              <input type="checkbox" value={'BottomWear'} id="" className='w-3' onChange={toggleSubCategory} />BottomWear
             </p>
           </div>
         </div>
       </div>
       {/* Riigt Side */}
       <div className='flex-1'>
-          <div className='flex justify-between mb-4 text:base sm:text-2xl'>
-            <Title text1={'All'} text2={'Collections'} />    
-            {/* Product Sort */}
-            <select name="" className='border border-gray-400 px-2 text:sm'>
-              <option value="Relevant">Relevant</option>
-              <option value="Low to High">Low to High</option>
-              <option value="High to Low">High to Low</option>
-            </select>
-          </div>
-          {/* Map Product */}
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'> 
-            {
-              filterProducts.map((item,index)=>(
-                 < ProductItem 
-                 key={index}
-                 id={item._id}
-                 image={item.image}
-                 name={item.name}
-                 price={item.price}
-
-                 /> 
-              ))
-            }
-          </div>
+        <div className='flex justify-between mb-4 text:base sm:text-2xl'>
+          <Title text1={'All'} text2={'Collections'} />
+          {/* Product Sort */}
+          <select name="" className='border border-gray-400 px-2 text:sm'>
+            <option value="Relevant">Relevant</option>
+            <option value="Low to High">Low to High</option>
+            <option value="High to Low">High to Low</option>
+          </select>
+        </div>
+        {/* Map Product */}
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
+          {
+            filterProducts.map((item, index) => (
+              < ProductItem
+                key={index}
+                id={item._id}
+                image={item.image}
+                name={item.name}
+                price={item.price}
+              />
+            ))
+          }
+        </div>
       </div>
 
     </div>

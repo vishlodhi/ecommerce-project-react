@@ -29,26 +29,28 @@ const Collection = () => {
       setSubCategory(prev => [...prev, e.target.value])
     }
   }
-  
 
- const applyFilter =()=>{
-  
-  let productsCopy = products.slice();
 
-  if (category.length > 0){
-    productsCopy = productsCopy.filter(item=>category.includes(item.category));
+  const applyFilter = () => {
+    
+    let productsCopy = products.slice();
+
+    if (category.length > 0) {
+      productsCopy = productsCopy.filter(item => category.includes(item.category));
+    }
+    if (subCategory.length > 0) {
+      productsCopy = productsCopy.filter(item => subCategory.includes(item.subCategory));
+    }
+    setFilterProducts(productsCopy);
   }
-   setFilterProducts(productsCopy);
- }
 
- useEffect(()=>{
-  setFilterProducts(products);
- },[products])
+  useEffect(() => {
+    setFilterProducts(products);
+  }, [products])
 
-  useEffect(()=>{
-    applyFilter();
-  },[category])
-
+  useEffect(() => {
+    applyFilter()
+  }, [category, subCategory])
 
 
   return (
@@ -77,13 +79,13 @@ const Collection = () => {
           <p className='text-sm mb-5 font-medium' >SUB-CATEGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'Summerwear'} id="" className='w-3' onChange={toggleSubCategory} />Summerwear
+              <input type="checkbox" value={'Topwear'} id="" className='w-3' onChange={toggleSubCategory} />Summerwear
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'WinterWear'} id="" className='w-3' onChange={toggleSubCategory} />WinterWear
+              <input type="checkbox" value={'Winterwear'} id="" className='w-3' onChange={toggleSubCategory} />WinterWear
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" value={'BottomWear'} id="" className='w-3' onChange={toggleSubCategory} />BottomWear
+              <input type="checkbox" value={'Bottomwear'} id="" className='w-3' onChange={toggleSubCategory} />BottomWear
             </p>
           </div>
         </div>

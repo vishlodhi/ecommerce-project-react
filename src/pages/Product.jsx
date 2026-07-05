@@ -18,7 +18,6 @@ const Product = () => {
       if (item._id === productId) {
         setProductData(item);
         setImage(item.image[0]);
-        console.log(item);
         return null;
       }
 
@@ -26,6 +25,10 @@ const Product = () => {
   }
   useEffect(() => {
     fetchProductData();
+    window.scrollTo({
+      top:0,
+      behavior:'smooth'
+    })
   }, [products, productId])
 
   return productData ? (
@@ -99,7 +102,7 @@ const Product = () => {
       </div>
       {/* Related Products */}
       <div>
-        <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
+        <RelatedProducts currentProductId={productData._id} category={productData.category} subCategory={productData.subCategory} />
       </div >
     </div>
   ) : <div className='opacity-0'>

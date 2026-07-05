@@ -9,7 +9,7 @@ const Product = () => {
   const { products, currency } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('');
-  const [size,setSize]  = useState('');
+  const [size, setSize] = useState('');
 
 
   const fetchProductData = async () => {
@@ -63,10 +63,38 @@ const Product = () => {
             <p className='text-2xl font-medium'>Select Size</p>
             <div className='flex gap-2'>
               {productData.sizes.map((item) => (
-                <button onClick={()=>setSize(item)} className={`size-14 border py-3 px-4 bg-gray-100 cursor-pointer ${item === size ? 'border-ora' : ''}`} key={item}>{item}</button>
+                <button onClick={() => setSize(item)} className={`size-14 border py-3 px-4 bg-gray-100 cursor-pointer ${item === size ? 'bg-gray-300' : 'border-gray-50'}`} key={item}>{item}</button>
               ))}
             </div>
           </div>
+          <button className='bg-black py-3 px-8 text-white font-bold text-sm active:bg-gray-700'>Add to Cart</button>
+          <hr className='mt-8 sm:w-3/4' />
+          <div className='text:sm flex flex-col gap-1 mt-5 text-gray-500 '>
+            <p>% Original Product.</p>
+            <p>Easy Cash on Delivery Available.</p>
+            <p>Easy return and exchange policy.</p>
+          </div>
+        </div>
+      </div>
+      {/* Discription and review systems */}
+      <div className='mt-20'>
+        <div className='flex'>
+          <b className='text-sm border py-3 px-5'>Description</b>
+          <p className='text-sm border py-3 px-5'>Reviews(134)</p>
+        </div>
+        <div className='flex flex-col gap-5 px-5 py-3 text-sm text-gray-500'>
+          <p>
+            Crafted from premium 100% cotton, this T-shirt offers exceptional comfort, breathability, and long-lasting durability. Designed with a modern regular fit and soft fabric, it is perfect for everyday wear, office, travel, and casual outings.
+          </p>
+          <p>Key Features:</p>
+          <ul className="list-disc pl-5 mt-2 space-y-1">
+    <li>Premium 100% Cotton Fabric</li>
+    <li>Soft & Breathable Material</li>
+    <li>Regular Fit</li>
+    <li>Durable Stitching</li>
+    <li>Machine Washable</li>
+    <li>Suitable for Everyday Wear</li>
+  </ul>
         </div>
       </div>
     </div >

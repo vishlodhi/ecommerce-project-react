@@ -7,7 +7,7 @@ import RelatedProducts from '../components/RelatedProducts';
 const Product = () => {
 
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('');
   const [size, setSize] = useState('');
@@ -70,7 +70,7 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button className='bg-black py-3 px-8 text-white font-bold text-sm active:bg-gray-700'>Add to Cart</button>
+          <button onClick={()=>addToCart(productData._id,size)} className='bg-black py-3 px-8 text-white font-bold text-sm active:bg-gray-700'>Add to Cart</button>
           <hr className='mt-8 sm:w-3/4' />
           <div className='text:sm flex flex-col gap-1 mt-5 text-gray-500 '>
             <p>% Original Product.</p>

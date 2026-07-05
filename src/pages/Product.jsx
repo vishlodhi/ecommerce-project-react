@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { assets, products } from '../assets/assets'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
+import RelatedProducts from '../components/RelatedProducts';
 
 const Product = () => {
 
@@ -23,7 +24,6 @@ const Product = () => {
 
     })
   }
-
   useEffect(() => {
     fetchProductData();
   }, [products, productId])
@@ -86,18 +86,22 @@ const Product = () => {
           <p>
             Crafted from premium 100% cotton, this T-shirt offers exceptional comfort, breathability, and long-lasting durability. Designed with a modern regular fit and soft fabric, it is perfect for everyday wear, office, travel, and casual outings.
           </p>
-          <p>Key Features:</p>
-          <ul className="list-disc pl-5 mt-2 space-y-1">
-    <li>Premium 100% Cotton Fabric</li>
-    <li>Soft & Breathable Material</li>
-    <li>Regular Fit</li>
-    <li>Durable Stitching</li>
-    <li>Machine Washable</li>
-    <li>Suitable for Everyday Wear</li>
-  </ul>
+          <p className='mt-4 font-medium text-gray-700'>Key Features:</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Premium 100% Cotton Fabric</li>
+            <li>Soft & Breathable Material</li>
+            <li>Regular Fit</li>
+            <li>Durable Stitching</li>
+            <li>Machine Washable</li>
+            <li>Suitable for Everyday Wear</li>
+          </ul>
         </div>
       </div>
-    </div >
+      {/* Related Products */}
+      <div>
+        <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
+      </div >
+    </div>
   ) : <div className='opacity-0'>
 
   </div>

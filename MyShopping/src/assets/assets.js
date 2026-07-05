@@ -10,6 +10,8 @@ import p_img6 from './p_img6.png'
 import p_img7 from './p_img7.png'
 import p_img8 from './p_img8.png'
 import p_img9 from './p_img9.png'
+import p_img9_1 from './p_img9_1.png'
+import p_img9_2 from './p_img9_2.png'
 import p_img10 from './p_img10.png'
 import p_img11 from './p_img11.png'
 import p_img12 from './p_img12.png'
@@ -205,7 +207,7 @@ export const products = [
         name: "Girls Round Neck Cotton Top",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 100,
-        image: [p_img9],
+        image: [p_img9,p_img9_1,p_img9_2],
         category: "Kids",
         subCategory: "Topwear",
         sizes: ["M", "L", "XL"],

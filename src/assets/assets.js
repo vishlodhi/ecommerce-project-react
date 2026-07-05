@@ -728,9 +728,9 @@ export const products = [
     },  
     {
         _id: "aaabzz",
-        name: "Men Slim Fit T-Shirt",
+        name: "Men Slim Fit Gym T-Shirt",
         description: "Designed for performance and comfort, this premium compression T-shirt provides a snug fit that supports your muscles during workouts. Made from breathable, moisture-wicking fabric with four-way stretch technology, it keeps you cool, dry, and comfortable during gym sessions, running, training, and other fitness activities.",
-        price: 240,
+        price: 150,
         image: [p_img53,p_img53_1,p_img53_2],
         category: "Men",
         subCategory: "Topwear",

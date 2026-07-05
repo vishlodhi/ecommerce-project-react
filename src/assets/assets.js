@@ -57,6 +57,9 @@ import p_img49 from './p_img49.png'
 import p_img50 from './p_img50.png'
 import p_img51 from './p_img51.png'
 import p_img52 from './p_img52.png'
+import p_img53 from './p_img35.png'
+import p_img53_1 from './p_img53_1.png'
+import p_img53_2 from './p_img53_2.png'
 
 
 import logo from './logo.png'
@@ -722,6 +725,18 @@ export const products = [
         sizes: ["S", "M", "L", "XL"],
         date: 1716668445448,
         bestseller: false
+    },  
+    {
+        _id: "aaabzz",
+        name: "Men Slim Fit T-Shirt",
+        description: "Designed for performance and comfort, this premium compression T-shirt provides a snug fit that supports your muscles during workouts. Made from breathable, moisture-wicking fabric with four-way stretch technology, it keeps you cool, dry, and comfortable during gym sessions, running, training, and other fitness activities.",
+        price: 240,
+        image: [p_img53,p_img53_1,p_img53_2],
+        category: "Men",
+        subCategory: "Topwear",
+        sizes: ["S", "M", "L", "XL"],
+        date: 1716668445448,
+        bestseller: true
     }
 
 ]

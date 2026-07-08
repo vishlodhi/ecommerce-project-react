@@ -12,10 +12,17 @@ const ShopContextProvider = (props) => {
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
 
+    const updateQuantity = async (itemId,size,quantity)=>{
+    const cartData = structuredClone(cartItems);
+    cartData[itemId][size]= quantity;
+    setCartItems(cartData)
+}
+
     const addToCart = async (itemId, size) => {
 
         if (!size) {
-            toast.error("Please Select Size")
+            toast.error("Please Select Size");
+            return;
         }
 
         let cartData = structuredClone(cartItems);
@@ -46,25 +53,24 @@ const ShopContextProvider = (props) => {
                         totalCount += cartItems[items][item];
                     }
                 } catch (error) {
-
                 }
             }
         }
         return totalCount;
     }
+const value = {
+    products, currency, delivery_fee,
+    search, setSearch, showSearch, setShowSearch,
+    cartItems, addToCart,
+    getCartCount,
+    updateQuantity
+}
 
-    const value = {
-        products, currency, delivery_fee,
-        search, setSearch, showSearch, setShowSearch,
-        cartItems, addToCart,
-        getCartCount
-    }
-
-    return (
-        <ShopContext.Provider value={value}>
-            {props.children}
-        </ShopContext.Provider>
-    )
+return (
+    <ShopContext.Provider value={value}>
+        {props.children}
+    </ShopContext.Provider>
+)
 }
 
 export default ShopContextProvider;

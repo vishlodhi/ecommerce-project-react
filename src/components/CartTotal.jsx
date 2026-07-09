@@ -1,11 +1,34 @@
-import React from 'react'
+import { useContext } from 'react'
+import Title from '../components/Title'
+import { ShopContext } from '../context/ShopContext'
 
 const CartTotal = () => {
-  return (
-    <div className=''>
 
+  const { currency, delivery_fee, getCartAmount } = useContext(ShopContext);
+
+  return (
+    <div className='w-full'>
+      <div className='text-2xl'>
+        <Title text1={'Your'} text2={'Total'} />
+      </div>
+      <div className='flex flex-col gap-2 mt-2 text-sm sm:text-lg'>
+        <div className='flex justify-between'>
+          <p>SubTotal</p>
+          <p>{currency} {getCartAmount()}.00</p>
+        </div>
+        <hr />
+        <div className='flex justify-between'>
+          <p>Shiipping Fee</p>
+          <p>{currency} {delivery_fee}.00</p>
+        </div>
+        <hr />
+        <div className='flex justify-between'>
+          <b>Total</b>
+          <b>{currency} {getCartAmount() === 0 ? 0 : getCartAmount() + delivery_fee}</b>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default CartTotal
+export default CartTotal 

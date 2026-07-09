@@ -12,11 +12,7 @@ const ShopContextProvider = (props) => {
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
 
-    const updateQuantity = async (itemId,size,quantity)=>{
-    const cartData = structuredClone(cartItems);
-    cartData[itemId][size]= quantity;
-    setCartItems(cartData)
-}
+
 
     const addToCart = async (itemId, size) => {
 
@@ -56,22 +52,46 @@ const ShopContextProvider = (props) => {
 
                 }
             }
-        }   
+        }
         return totalCount;
     }
-const value = {
-    products, currency, delivery_fee,
-    search, setSearch, showSearch, setShowSearch,
-    cartItems, addToCart,
-    getCartCount,
-    updateQuantity
-}
+    const updateQuantity = async (itemId, size, quantity) => {
+        const cartData = structuredClone(cartItems);
+        cartData[itemId][size] = quantity;
+        setCartItems(cartData)
+    }
 
-return (
-    <ShopContext.Provider value={value}>
-        {props.children}
-    </ShopContext.Provider>
-)
+    const getCartAmount = () => {
+        let totalAmount = 0;
+        for (const items in cartItems) {
+            let itemInfo = products.find((product) => product._id === items);
+            for (const item in cartItems[items]) {
+                try {
+                    if(itemInfo && cartItems[items][item] > 0){
+                        totalAmount += itemInfo.price * cartItems[items][item];
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }
+        return totalAmount;
+    }
+
+    const value = {
+        products, currency, delivery_fee,
+        search, setSearch, showSearch, setShowSearch,
+        cartItems, addToCart,
+        getCartCount,
+        updateQuantity,
+        getCartAmount
+    }
+
+    return (
+        <ShopContext.Provider value={value}>
+            {props.children}
+        </ShopContext.Provider>
+    )
 }
 
 export default ShopContextProvider;

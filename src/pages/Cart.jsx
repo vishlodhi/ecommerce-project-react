@@ -6,8 +6,8 @@ import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
 
-  const { products, currency , cartItems, updateQuantity } = useContext(ShopContext);
-  const [cartData,setCartData] = useState([]);
+  const { products, currency, cartItems, updateQuantity } = useContext(ShopContext);
+  const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
 
@@ -48,8 +48,8 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                  <input onClick={(e)=>e.target.value === '' || e.target.value === '0' ? null : updateQuantity(item._id,item.size,Number(e.target.value))} className='border max-w-10 sm:max-w-15 px-1 sm:px-2 py-1' type='number' min={1} defaultValue={item.quantity} />
-                  <img onClick={()=> updateQuantity(item._id,item.size,0) } className='w-4 mr-4 cursor-pointer sm:w-5' src={assets.bin_icon} alt="" />
+                <input onClick={(e) => e.target.value === '' || e.target.value === '0' ? null : updateQuantity(item._id, item.size, Number(e.target.value))} className='border max-w-10 sm:max-w-15 px-1 sm:px-2 py-1' type='number' min={1} defaultValue={item.quantity} />
+                <img onClick={() => updateQuantity(item._id, item.size, 0)} className='w-4 mr-4 cursor-pointer sm:w-5' src={assets.bin_icon} alt="" />
               </div>
             )
 
@@ -57,9 +57,9 @@ const Cart = () => {
         }
       </div>
       <div className='flex justify-end mt-20'>
-            <div className='w-full sm:w-[450px]'>
-              < CartTotal />
-            </div>
+        <div className='w-full sm:w-[450px]'>
+          < CartTotal />
+        </div>
       </div>
     </div>
   )

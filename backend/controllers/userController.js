@@ -2,6 +2,7 @@ import validator from 'validator';
 import userModel from "../models/userModel.js";
 import bcrypt from 'bcrypt';
 import createToken from '../utils/jwt.js';
+import jwt from "jsonwebtoken"
 
 
 /* routes for Login */
@@ -119,5 +120,29 @@ const registerUser = async (req, res) => {
 
 const adminLogin = async (req, res) => {
 
+    try {
+
+        const { email, password } = req.body
+        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+            const token = jwt.sign(
+                { role: "admin" },
+                process.env.JWT_SECRET)
+
+            return res.json({
+                success: true,
+                token
+            })
+        }
+        return res.json({
+            success: true,
+            message: "Invalid Credentials"
+        })
+    } catch (error) {
+        console.log(error)
+        res.json({
+            success: false,
+            message: "Invalid Credentials"
+        })
+    }
 }
 export { userLogin, registerUser, adminLogin } 

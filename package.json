@@ -6,7 +6,8 @@
   "scripts": {
     "frontend" : "vite",
     "backend": "npm run dev --prefix backend",
-    "dev" : "concurrently \"npm run frontend\" \"npm run backend\"",
+    "admin": "npm run dev --prefix admin",
+    "dev" : "concurrently \"npm run frontend\" \"npm run backend\" \"npm run admin\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

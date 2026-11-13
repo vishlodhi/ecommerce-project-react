@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "frontend" : "vite",
+    "frontend" : "vite --host 0.0.0.0",
     "backend": "npm run dev --prefix backend",
     "admin": "npm run dev --prefix admin",
     "dev" : "concurrently \"npm run frontend\" \"npm run backend\" \"npm run admin\"",

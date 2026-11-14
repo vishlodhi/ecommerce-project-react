@@ -134,7 +134,7 @@ const adminLogin = async (req, res) => {
             })
         }
         return res.json({
-            success: true,
+            success: false,
             message: "Invalid Credentials"
         })
     } catch (error) {
